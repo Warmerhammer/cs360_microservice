@@ -113,113 +113,125 @@ app.get('/nbaIcon/:_team', (req, res) => {
   }
 
 
-  app.get('/nflIcon/:_team', (_, res) => {
-    const request = req.params._team
-
-    switch (request) {
-      case 'cardinals':
-        image = "arizona_cardinals.png"
-        break;
-      case 'falcons':
-        image = "atlanta_falcons.png"
-        break;
-      case 'ravens':
-        image = "baltimore_ravens.png";
-        break;
-      case 'panthers':
-        image = "caronlina_panthers.png";
-        break;
-      case 'bills':
-        image = "buffalo_bills.png";
-        break;
-      case 'bengals':
-        image = "cincinatti_bengals.png";
-        break;
-      case 'bears':
-        image = "chicago_bears.png";
-        break;
-      case 'browns':
-        image = "cleveland_browns.png";
-        break;
-      case 'cowboys':
-        image = "dallas_cowboys.png";
-        break;
-      case 'broncos':
-        image = "denver_broncos.png";
-        break;
-      case 'lions':
-        image = "detroit_lions.png";
-        break;
-      case 'texans':
-        image = "houston_texans.png";
-        break;
-      case 'packers':
-        image = "greenbay_packers.png";
-        break;
-      case 'colts':
-        image = "indianapolis_colts.png";
-        break;
-      case 'rams':
-        image = "losangeles_rams.png";
-        break;
-      case 'jaguars':
-        image = "jacksonville_jaguars.png";
-        break;
-      case 'vikings':
-        image = "minnesota_vikings.png";
-        break;
-      case 'chiefs':
-        image = "kansascity_chiefs.png";
-        break;
-      case 'saints':
-        image = "neworleans_saints.png";
-        break;
-      case 'raiders':
-        image = "oakland_raiders.png";
-        break;
-      case 'giants':
-        image = "newyork_giants.png";
-        break;
-      case 'chargers':
-        image = "losangeles_chargers.png";
-        break;
-      case 'eagles':
-        image = "philadelphia_eagles.png";
-        break;
-      case 'dolphins':
-        image = "miami_dolphins.png";
-        break;
-      case '49ers':
-        image = "sanfrancisco_49ers";
-        break;
-      case 'patriots':
-        image = "newengland_patriots.png";
-        break;
-      case 'seahawks':
-        image = "seattle_seahawks.png";
-        break;
-      case 'jets':
-        image = "newyork_jets.png";
-        break;
-      case 'buccaneers':
-        image = "tampabay_buccaneers.png";
-        break;
-      case 'steelers':
-        image = "pittsburgh_steelers.png";
-        break;
-      case 'commanders':
-        image = "washington_commanders.png";
-        break;
-      case 'titans':
-        image = "tennessee_titans.png";
-        break;
-
-    }
-
-  });
-
 
 })
+
+
+app.get('/nflIcon/:_team', (req, res) => {
+  const request = req.params._team
+
+  let image = ""
+  switch (request) {
+    case 'cardinals':
+      image = "arizona_cardinals.png"
+      break;
+    case 'falcons':
+      image = "atlanta_falcons.png"
+      break;
+    case 'ravens':
+      image = "baltimore_ravens.png";
+      break;
+    case 'panthers':
+      image = "caronlina_panthers.png";
+      break;
+    case 'bills':
+      image = "buffalo_bills.png";
+      break;
+    case 'bengals':
+      image = "cincinatti_bengals.png";
+      break;
+    case 'bears':
+      image = "chicago_bears.png";
+      break;
+    case 'browns':
+      image = "cleveland_browns.png";
+      break;
+    case 'cowboys':
+      image = "dallas_cowboys.png";
+      break;
+    case 'broncos':
+      image = "denver_broncos.png";
+      break;
+    case 'lions':
+      image = "detroit_lions.png";
+      break;
+    case 'texans':
+      image = "houston_texans.png";
+      break;
+    case 'packers':
+      image = "greenbay_packers.png";
+      break;
+    case 'colts':
+      image = "indianapolis_colts.png";
+      break;
+    case 'rams':
+      image = "losangeles_rams.png";
+      break;
+    case 'jaguars':
+      image = "jacksonville_jaguars.png";
+      break;
+    case 'vikings':
+      image = "minnesota_vikings.png";
+      break;
+    case 'chiefs':
+      image = "kansascity_chiefs.png";
+      break;
+    case 'saints':
+      image = "neworleans_saints.png";
+      break;
+    case 'raiders':
+      image = "oakland_raiders.png";
+      break;
+    case 'giants':
+      image = "newyork_giants.png";
+      break;
+    case 'chargers':
+      image = "losangeles_chargers.png";
+      break;
+    case 'eagles':
+      image = "philadelphia_eagles.png";
+      break;
+    case 'dolphins':
+      image = "miami_dolphins.png";
+      break;
+    case '49ers':
+      image = "sanfrancisco_49ers";
+      break;
+    case 'patriots':
+      image = "newengland_patriots.png";
+      break;
+    case 'seahawks':
+      image = "seattle_seahawks.png";
+      break;
+    case 'jets':
+      image = "newyork_jets.png";
+      break;
+    case 'buccaneers':
+      image = "tampabay_buccaneers.png";
+      break;
+    case 'steelers':
+      image = "pittsburgh_steelers.png";
+      break;
+    case 'commanders':
+      image = "washington_commanders.png";
+      break;
+    case 'titans':
+      image = "tennessee_titans.png";
+      break;
+
+  }
+
+  try {
+    res.status(200).json({
+      image
+    })
+  }
+  catch (error) {
+    console.log(error);
+    res.status(400).json({ Error: 'Request Failed' });
+  }
+
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
